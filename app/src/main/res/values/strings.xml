@@ -28,4 +28,33 @@
         <item>5</item>
         <item>6</item>
     </string-array>
+
+    <string-array name="donut_types_array">
+        <item>Yeast</item>
+        <item>Cake</item>
+        <item>Donut Hole</item>
+    </string-array>
+
+    <string-array name="yeast_flavours_array">
+        <item>Strawberry</item>
+        <item>Matcha</item>
+        <item>Glazed</item>
+    </string-array>
+
+    <string-array name="cake_flavours_array">
+        <item>Chocolate</item>
+        <item>Strawberry</item>
+        <item>Jelly</item>
+    </string-array>
+
+    <string-array name="donut_hole_flavours_array">
+        <item>Jelly</item>
+        <item>Cinnamon</item>
+        <item>Lemonade</item>
+    </string-array>
+
+    <!-- Strings ued for xmls -->
+    <string name="place_order_btn">Place Order</string>
+    <string name="add_btn">Add</string>
+    <string name="remove_btn">Remove</string>
 </resources>
