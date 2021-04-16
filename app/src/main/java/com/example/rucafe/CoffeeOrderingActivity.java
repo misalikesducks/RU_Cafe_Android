@@ -4,12 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Spinner;
+import android.widget.*;
 
 public class CoffeeOrderingActivity extends AppCompatActivity {
     Spinner sizesSpinner, quantitySpinner;
-    Button addToOrderButton; 
+    Button addToOrderButton;
+  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,15 +23,15 @@ public class CoffeeOrderingActivity extends AppCompatActivity {
         sizesSpinner.setAdapter(adapter);
 
         quantitySpinner = (Spinner)findViewById(R.id.amountSpinner);
-        adapter = ArrayAdapter.createFromResource(this, R.array.quantity_array, 
+        adapter = ArrayAdapter.createFromResource(this, R.array.quantity_array,
                 android.R.layout.simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         quantitySpinner.setAdapter(adapter);
 
         addToOrderButton =  (Button)findViewById(R.id.addToOrderButton);
     }
-    
-    
+
+
     /*
         Coffee
         get add ins
