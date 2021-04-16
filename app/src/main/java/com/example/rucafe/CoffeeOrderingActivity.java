@@ -9,7 +9,7 @@ import android.widget.*;
 public class CoffeeOrderingActivity extends AppCompatActivity {
     Spinner sizesSpinner, quantitySpinner;
     Button addToOrderButton;
-  
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +27,7 @@ public class CoffeeOrderingActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         quantitySpinner.setAdapter(adapter);
-
-        addToOrderButton =  (Button)findViewById(R.id.addToOrderButton);
+        addToOrderButton = (Button) findViewById(R.id.addToOrderButton);
     }
 
 
