@@ -9,4 +9,23 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <!-- Strings used for warnings -->
+
+    <!-- Strings used for spinners -->
+    <string-array name="coffee_sizes_array">
+        <item>Tall</item>
+        <item>Venti</item>
+        <item>Grande</item>
+        <item>Short</item>
+    </string-array>
+
+    <string-array name="quantity_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
 </resources>
