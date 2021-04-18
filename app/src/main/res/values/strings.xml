@@ -58,4 +58,9 @@
     <string name="place_order_btn">Place Order</string>
     <string name="add_btn">Add</string>
     <string name="remove_btn">Remove</string>
+
+    <string name="order_donuts">Order Donuts</string>
+    <string name="order_coffee">Order Coffee</string>
+    <string name="order">Order</string>
+    <string name="store_order">Store Order</string>
 </resources>
