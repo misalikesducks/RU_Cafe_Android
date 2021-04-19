@@ -37,7 +37,7 @@ public class CoffeeOrderingActivity extends AppCompatActivity{
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String sizeText = parent.getItemAtPosition(position).toString();
-                Toast.makeText(parent.getContext(), sizeText, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(parent.getContext(), sizeText, Toast.LENGTH_SHORT).show();
                 currCoffee.setSize(sizeText);
                 currCoffee.setPrice(currCoffee.itemPrice());
                 System.out.println(currCoffee.getPrice());
@@ -116,7 +116,11 @@ public class CoffeeOrderingActivity extends AppCompatActivity{
     public void addCoffeeToOrder(View view){
         if(currCoffeeOrder.getItems().add(currCoffee)) {
             currCoffeeOrder.setSubTotal();
+            Toast toast = Toast.makeText(getApplicationContext(), "Order Added", Toast.LENGTH_SHORT);
+            toast.show();
         }
+
+
     }
 
     /*

@@ -6,81 +6,102 @@
     android:layout_height="match_parent"
     tools:context=".CurrentOrderActivity">
 
+    <Button
+        android:id="@+id/placeOrderButton"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/place_order_btn"
+        app:layout_constraintStart_toEndOf="@+id/removeButton"
+        app:layout_constraintTop_toBottomOf="@+id/ordersListView" />
+
+    <Button
+        android:id="@+id/removeButton"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/remove_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ordersListView" />
+
     <ListView
+        android:id="@+id/ordersListView"
         android:layout_width="348dp"
         android:layout_height="397dp"
         android:layout_marginTop="64dp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="33dp" />
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/subtotalDisplayTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="133dp"
+        android:layout_marginRight="133dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/placeOrderButton" />
 
     <TextView
         android:id="@+id/salesTaxTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
         android:text="@string/sales_tax"
-        tools:layout_editor_absoluteX="127dp"
-        tools:layout_editor_absoluteY="528dp" />
+        app:layout_constraintEnd_toStartOf="@+id/salesTaxDisplayTextView"
+        app:layout_constraintTop_toBottomOf="@+id/subTotalTextView" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/totalDisplayTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="133dp"
+        android:layout_marginRight="133dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="216dp"
-        tools:layout_editor_absoluteY="561dp" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="216dp"
-        tools:layout_editor_absoluteY="528dp" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="216dp"
-        tools:layout_editor_absoluteY="495dp" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="160dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="34dp"
-        android:layout_marginLeft="34dp"
-        android:layout_marginBottom="70dp"
-        android:text="@string/remove_btn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/subTotalTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/subtotal"
-        tools:layout_editor_absoluteX="135dp"
-        tools:layout_editor_absoluteY="495dp" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="160dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginRight="35dp"
-        android:layout_marginBottom="70dp"
-        android:text="@string/place_order_btn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/salesTaxDisplayTextView" />
 
     <TextView
         android:id="@+id/totalTxtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginRight="22dp"
         android:text="@string/total"
-        tools:layout_editor_absoluteX="156dp"
-        tools:layout_editor_absoluteY="560dp" />
+        app:layout_constraintEnd_toStartOf="@+id/totalDisplayTextView"
+        app:layout_constraintTop_toBottomOf="@+id/salesTaxTextView" />
+
+    <TextView
+        android:id="@+id/subTotalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:text="@string/subtotal"
+        app:layout_constraintEnd_toStartOf="@+id/subtotalDisplayTextView"
+        app:layout_constraintTop_toBottomOf="@+id/removeButton" />
+
+    <TextView
+        android:id="@+id/salesTaxDisplayTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="133dp"
+        android:layout_marginRight="133dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subtotalDisplayTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
