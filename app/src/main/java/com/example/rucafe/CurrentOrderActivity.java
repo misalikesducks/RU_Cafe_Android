@@ -14,8 +14,8 @@ public class CurrentOrderActivity extends AppCompatActivity {
     Button removeOrderButton, placeOrderButton;
     TextView subtotalTextView, taxTextView, totalTextView;
 
-    ArrayList<MenuItem> itemsToDisplay;
-
+    protected ArrayList<MenuItem> itemsToDisplay;
+    protected MenuItemAdapter menuAdaptor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +27,10 @@ public class CurrentOrderActivity extends AppCompatActivity {
             itemsToDisplay.add(MainActivity.currOrder.items.get(i));
         }
 
-        ArrayAdapter<MenuItem> adapter = new ArrayAdapter<MenuItem>(this, android.R.layout.simple_list_item_1, itemsToDisplay);
-        ordersListview.setAdapter(adapter);
+        menuAdaptor = new MenuItemAdapter(this, itemsToDisplay);
+        ordersListview.setAdapter(menuAdaptor);
+
+
         removeOrderButton = (Button) findViewById(R.id.removeOrderButton);
         placeOrderButton = (Button) findViewById(R.id.placeOrderButton);
         subtotalTextView = (TextView) findViewById(R.id.subtotalDisplayTextView);
