@@ -14,10 +14,11 @@
         android:layout_marginLeft="41dp"
         android:layout_marginEnd="64dp"
         android:layout_marginRight="64dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="12dp"
         app:layout_constraintBottom_toTopOf="@+id/amountSpinner"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/switch1" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/caramelSwitch" />
 
     <Spinner
         android:id="@+id/amountSpinner"
@@ -27,69 +28,75 @@
         android:layout_marginLeft="41dp"
         android:layout_marginEnd="64dp"
         android:layout_marginRight="64dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="12dp"
         app:layout_constraintBottom_toTopOf="@+id/totalTextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/switch2" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/milkSwitch" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/caramelSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="42dp"
         android:layout_marginLeft="42dp"
         android:layout_marginTop="303dp"
-        android:text="Switch"
+        android:onClick="getAddIns"
+        android:text="@string/caramel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Switch
-        android:id="@+id/switch2"
+        android:id="@+id/milkSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="42dp"
         android:layout_marginLeft="42dp"
-        android:text="Switch"
+        android:onClick="getAddIns"
+        android:text="@string/milk"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch1" />
+        app:layout_constraintTop_toBottomOf="@+id/caramelSwitch" />
 
     <Switch
-        android:id="@+id/switch3"
+        android:id="@+id/syrupSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="42dp"
         android:layout_marginLeft="42dp"
-        android:text="Switch"
+        android:onClick="getAddIns"
+        android:text="@string/syrup"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch2" />
+        app:layout_constraintTop_toBottomOf="@+id/milkSwitch" />
 
     <Switch
-        android:id="@+id/switch4"
+        android:id="@+id/creamSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="42dp"
         android:layout_marginLeft="42dp"
-        android:text="Switch"
+        android:onClick="getAddIns"
+        android:text="@string/cream"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch3" />
+        app:layout_constraintTop_toBottomOf="@+id/syrupSwitch" />
 
     <Switch
-        android:id="@+id/switch5"
+        android:id="@+id/whippedSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="42dp"
         android:layout_marginLeft="42dp"
-        android:text="Switch"
+        android:onClick="getAddIns"
+        android:text="@string/whipped_cream"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch4" />
+        app:layout_constraintTop_toBottomOf="@+id/creamSwitch" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="221dp"
         android:layout_height="192dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginLeft="84dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginLeft="92dp"
+        android:layout_marginTop="36dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />
@@ -102,11 +109,12 @@
         android:layout_marginLeft="57dp"
         android:layout_marginEnd="77dp"
         android:layout_marginRight="77dp"
-        android:layout_marginBottom="41dp"
+        android:layout_marginBottom="4dp"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/addToOrderButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/switch4" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/creamSwitch" />
 
     <Button
         android:id="@+id/addToOrderButton"
@@ -116,10 +124,12 @@
         android:layout_marginLeft="211dp"
         android:layout_marginEnd="88dp"
         android:layout_marginRight="88dp"
-        android:layout_marginBottom="258dp"
+        android:layout_marginBottom="116dp"
+        android:onClick="addCoffeeToOrder"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,8 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
     private Button coffeeButton, donutButton, currentOrderButton, storeOrderButton;
+    protected static Order currOrder = new Order();
+    protected static StoreOrders currStoreOrder = new StoreOrders();
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {

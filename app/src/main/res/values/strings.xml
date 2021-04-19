@@ -68,4 +68,10 @@
     <string name="sales_tax">Sales Tax: </string>
     <string name="total">Total: </string>
     <string name="cancel">Cancel Order</string>
+
+    <string name="caramel">Caramel: </string>
+    <string name="milk">Milk: </string>
+    <string name="whipped_cream">Whipped Cream: </string>
+    <string name="syrup">Syrup: </string>
+    <string name="cream">Cream: </string>
 </resources>
