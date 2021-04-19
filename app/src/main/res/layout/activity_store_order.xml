@@ -9,7 +9,12 @@
     <ListView
         android:layout_width="349dp"
         android:layout_height="422dp"
-        tools:layout_editor_absoluteX="31dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginLeft="31dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginRight="31dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="182dp" />
 
     <Button
