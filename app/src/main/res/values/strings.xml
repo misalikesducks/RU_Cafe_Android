@@ -59,6 +59,12 @@
     <string name="add_btn">Add</string>
     <string name="remove_btn">Remove</string>
 
+    <string name="caramel">Caramel: </string>
+    <string name="milk">Milk: </string>
+    <string name="whipped_cream">Whipped Cream: </string>
+    <string name="syrup">Syrup: </string>
+    <string name="cream">Cream: </string>
+
     <string name="order_donuts">Order Donuts</string>
     <string name="order_coffee">Order Coffee</string>
     <string name="order">Order</string>
@@ -68,10 +74,4 @@
     <string name="sales_tax">Sales Tax: </string>
     <string name="total">Total: </string>
     <string name="cancel">Cancel Order</string>
-
-    <string name="caramel">Caramel: </string>
-    <string name="milk">Milk: </string>
-    <string name="whipped_cream">Whipped Cream: </string>
-    <string name="syrup">Syrup: </string>
-    <string name="cream">Cream: </string>
 </resources>
