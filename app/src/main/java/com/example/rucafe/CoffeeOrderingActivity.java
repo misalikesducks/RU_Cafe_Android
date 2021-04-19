@@ -112,6 +112,7 @@ public class CoffeeOrderingActivity extends AppCompatActivity{
 
     }
 
+    //hmm might not work but we will c
     public void addCoffeeToOrder(View view){
         if(currCoffeeOrder.getItems().add(currCoffee)) {
             currCoffeeOrder.setSubTotal();
