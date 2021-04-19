@@ -6,4 +6,49 @@
     android:layout_height="match_parent"
     tools:context=".StoreOrderActivity">
 
+    <ListView
+        android:layout_width="349dp"
+        android:layout_height="422dp"
+        tools:layout_editor_absoluteX="31dp"
+        tools:layout_editor_absoluteY="182dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel"
+        tools:layout_editor_absoluteX="132dp"
+        tools:layout_editor_absoluteY="638dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="105dp"
+        tools:layout_editor_absoluteY="137dp" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="150dp"
+        android:layout_height="34dp"
+        tools:layout_editor_absoluteX="106dp"
+        tools:layout_editor_absoluteY="72dp" />
+
+    <TextView
+        android:id="@+id/orderTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/order"
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="87dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/total"
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="137dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
