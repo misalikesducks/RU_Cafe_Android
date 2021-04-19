@@ -65,4 +65,6 @@
     <string name="store_order">Store Order</string>
 
     <string name="subtotal">Subtotal: </string>
+    <string name="sales_tax">Sales Tax: </string>
+    <string name="total">Total: </string>
 </resources>
