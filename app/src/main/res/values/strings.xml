@@ -63,4 +63,6 @@
     <string name="order_coffee">Order Coffee</string>
     <string name="order">Order</string>
     <string name="store_order">Store Order</string>
+
+    <string name="subtotal">Subtotal: </string>
 </resources>
