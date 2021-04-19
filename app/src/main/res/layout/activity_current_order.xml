@@ -14,11 +14,11 @@
         android:layout_marginLeft="28dp"
         android:layout_marginTop="16dp"
         android:text="@string/place_order_btn"
-        app:layout_constraintStart_toEndOf="@+id/removeButton"
+        app:layout_constraintStart_toEndOf="@+id/removeOrderButton"
         app:layout_constraintTop_toBottomOf="@+id/ordersListView" />
 
     <Button
-        android:id="@+id/removeButton"
+        android:id="@+id/removeOrderButton"
         android:layout_width="160dp"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
@@ -91,7 +91,7 @@
         android:layout_marginRight="24dp"
         android:text="@string/subtotal"
         app:layout_constraintEnd_toStartOf="@+id/subtotalDisplayTextView"
-        app:layout_constraintTop_toBottomOf="@+id/removeButton" />
+        app:layout_constraintTop_toBottomOf="@+id/removeOrderButton" />
 
     <TextView
         android:id="@+id/salesTaxDisplayTextView"

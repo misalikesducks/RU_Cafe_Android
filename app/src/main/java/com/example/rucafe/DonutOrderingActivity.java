@@ -25,7 +25,7 @@ public class DonutOrderingActivity extends AppCompatActivity implements AdapterV
 
         addToOrderButton = findViewById(R.id.addToOrderButton);
         addButton = findViewById(R.id.addButton);
-        removeButton = findViewById(R.id.removeButton);
+        removeButton = findViewById(R.id.removeOrderButton);
 
         donutOrderListView = findViewById(R.id.donutOrderListView);
 
