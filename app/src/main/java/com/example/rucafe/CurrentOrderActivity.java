@@ -1,9 +1,13 @@
 package com.example.rucafe;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Color;
 import android.view.View;
 import android.widget.*;
 import android.os.Bundle;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 
 import org.w3c.dom.Text;
 
@@ -21,9 +25,13 @@ public class CurrentOrderActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current_order);
 
-
 //        ordersListview.setOnClickListener(this);
         populateListView();
+        ordersListview.setOnItemClickListener(new OnItemClickListener(){
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+                parent.getChildAt(position).setBackgroundColor(Color.MAGENTA);
+            }
+        });
         removeOrderButton = (Button) findViewById(R.id.removeOrderButton);
         placeOrderButton = (Button) findViewById(R.id.placeOrderButton);
         subtotalTextView = (TextView) findViewById(R.id.subtotalDisplayTextView);
@@ -39,6 +47,7 @@ public class CurrentOrderActivity extends AppCompatActivity{
                 (this, R.layout.currorder_listitem,R.id.displayTextView,itemsToDisplay);
         ordersListview = (ListView) findViewById(R.id.orderDisplayListView);
         ordersListview.setAdapter(adapter);
+
     }
 
 

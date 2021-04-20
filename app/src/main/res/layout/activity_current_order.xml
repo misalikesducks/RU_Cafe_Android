@@ -12,7 +12,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="56dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:text="@string/place_order_btn"
@@ -26,7 +26,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="56dp"
         android:layout_marginEnd="28dp"
         android:layout_marginRight="28dp"
         android:text="@string/remove_btn"
@@ -120,8 +120,8 @@
 
     <ListView
         android:id="@+id/orderDisplayListView"
-        android:layout_width="358dp"
-        android:layout_height="403dp"
+        android:layout_width="356dp"
+        android:layout_height="405dp"
         android:layout_marginStart="26dp"
         android:layout_marginLeft="26dp"
         android:layout_marginTop="31dp"
@@ -129,6 +129,22 @@
         android:layout_marginRight="26dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:choiceMode="singleChoice"/>
+
+    <TextView
+        android:id="@+id/labelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginLeft="27dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="245dp"
+        android:layout_marginRight="245dp"
+        android:text="@string/selectInstruction"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/orderDisplayListView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
