@@ -6,48 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".DonutOrderingActivity">
 
-    <Button
-        android:id="@+id/removeOrderButton"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:layout_marginLeft="21dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="95dp"
-        android:layout_marginRight="95dp"
-        android:onClick="removeDonut"
-        android:text="@string/remove_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/addButton"
-        app:layout_constraintTop_toBottomOf="@+id/quantitySpinner" />
-
     <ListView
         android:id="@+id/donutOrderListView"
         android:layout_width="328dp"
         android:layout_height="266dp"
         android:layout_marginStart="41dp"
         android:layout_marginLeft="41dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="41dp"
         android:layout_marginRight="41dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/removeOrderButton" />
+        app:layout_constraintTop_toBottomOf="@+id/addButton" />
 
     <Button
         android:id="@+id/addButton"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="95dp"
-        android:layout_marginLeft="95dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="21dp"
-        android:layout_marginRight="21dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginLeft="152dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="159dp"
+        android:layout_marginRight="159dp"
         android:onClick="addDonut"
         android:text="@string/add_btn"
         app:backgroundTint="#673AB7"
-        app:layout_constraintEnd_toStartOf="@+id/removeOrderButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quantitySpinner" />
 

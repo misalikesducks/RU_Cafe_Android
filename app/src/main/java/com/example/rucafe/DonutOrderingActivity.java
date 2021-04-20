@@ -1,6 +1,9 @@
 package com.example.rucafe;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
@@ -31,6 +34,7 @@ public class DonutOrderingActivity extends AppCompatActivity implements AdapterV
         removeButton = findViewById(R.id.removeOrderButton);
 
         donutOrderListView = findViewById(R.id.donutOrderListView);
+        setUpListView(donutOrderListView);
 
         subtotalNumTextView = findViewById(R.id.subtotalNumTextView);
 
@@ -47,8 +51,7 @@ public class DonutOrderingActivity extends AppCompatActivity implements AdapterV
         quantitySpinner.setAdapter(adapter);
     }
 
-
-    //interface overrides
+    // interface overrides
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
@@ -58,7 +61,7 @@ public class DonutOrderingActivity extends AppCompatActivity implements AdapterV
     @Override
     public void onNothingSelected(AdapterView<?> parent) { } // can leave it empty
 
-
+    // helper methods
     public void setUpFlavourSpinner(Spinner s){
         s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -91,6 +94,31 @@ public class DonutOrderingActivity extends AppCompatActivity implements AdapterV
         });
     }
 
+    public void setUpListView(ListView l) {
+        l.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder removeAlert = new AlertDialog.Builder(DonutOrderingActivity.this);
+                removeAlert.setMessage("Remove the selected item?").setTitle("Remove");
+                removeAlert.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                removeAlert.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                AlertDialog removeDialog = removeAlert.create();
+                removeDialog.show();
+                // https://stackoverflow.com/questions/4834750/how-to-get-the-selected-item-from-listview
+            }
+        });
+    }
+
     public void addDonut(View view){
         // create a new Donut
         String donutType = typeSpinner.getSelectedItem().toString();
@@ -110,12 +138,6 @@ public class DonutOrderingActivity extends AppCompatActivity implements AdapterV
 
             displaySubtotal();
         }
-    }
-
-    public void removeDonut(View view){
-
-
-        displaySubtotal();
     }
 
     public void displaySubtotal(){
