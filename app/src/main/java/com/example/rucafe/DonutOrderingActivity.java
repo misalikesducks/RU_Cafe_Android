@@ -9,6 +9,9 @@ public class DonutOrderingActivity extends AppCompatActivity implements AdapterV
     Spinner typeSpinner, flavourSpinner, quantitySpinner;
     Button addToOrderButton, addButton, removeButton;
     ListView donutOrderListView;
+    TextView subtotalNumTextView;
+
+    protected Order currDonutOrder = new Order();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,25 +32,69 @@ public class DonutOrderingActivity extends AppCompatActivity implements AdapterV
 
         donutOrderListView = findViewById(R.id.donutOrderListView);
 
+        subtotalNumTextView = findViewById(R.id.subtotalNumTextView);
+
         // set up spinners
         ArrayAdapter<CharSequence> adapter =
                 ArrayAdapter.createFromResource(this, R.array.donut_types_array,
                         android.R.layout.simple_spinner_dropdown_item);
         typeSpinner.setAdapter(adapter);
 
+        setUpTypeSpinner(typeSpinner);
+
         adapter = ArrayAdapter.createFromResource(this, R.array.quantity_array,
                 android.R.layout.simple_spinner_dropdown_item);
         quantitySpinner.setAdapter(adapter);
     }
 
+
     //interface overrides
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+        displaySubtotal();
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) { } // can leave it empty
+
+
+    public void setUpTypeSpinner(Spinner s){
+        s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String type = parent.getItemAtPosition(position).toString();
+
+                if(type.equals("Yeast")){
+                    ArrayAdapter<CharSequence> adapter =
+                            ArrayAdapter.createFromResource(getApplicationContext(), R.array.yeast_flavours_array,
+                                    android.R.layout.simple_spinner_dropdown_item);
+                    flavourSpinner.setAdapter(adapter);
+                } else if(type.equals("Cake")){
+                    ArrayAdapter<CharSequence> adapter =
+                            ArrayAdapter.createFromResource(getApplicationContext(), R.array.cake_flavours_array,
+                                    android.R.layout.simple_spinner_dropdown_item);
+                    flavourSpinner.setAdapter(adapter);
+                } else if(type.equals("Donut Hole")){
+                    ArrayAdapter<CharSequence> adapter =
+                            ArrayAdapter.createFromResource(getApplicationContext(), R.array.donut_hole_flavours_array,
+                                    android.R.layout.simple_spinner_dropdown_item);
+                    flavourSpinner.setAdapter(adapter);
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+    }
+
+    public void displaySubtotal(){
+        subtotalNumTextView.setText("" + StoreOrders.convertToMoney(currDonutOrder.getSubTotal()));
+    }
 
    /*
        Donut
