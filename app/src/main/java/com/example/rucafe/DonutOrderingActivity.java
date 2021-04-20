@@ -40,7 +40,7 @@ public class DonutOrderingActivity extends AppCompatActivity implements AdapterV
                         android.R.layout.simple_spinner_dropdown_item);
         typeSpinner.setAdapter(adapter);
 
-        setUpTypeSpinner(typeSpinner);
+        setUpFlavourSpinner(typeSpinner);
 
         adapter = ArrayAdapter.createFromResource(this, R.array.quantity_array,
                 android.R.layout.simple_spinner_dropdown_item);
@@ -59,7 +59,7 @@ public class DonutOrderingActivity extends AppCompatActivity implements AdapterV
     public void onNothingSelected(AdapterView<?> parent) { } // can leave it empty
 
 
-    public void setUpTypeSpinner(Spinner s){
+    public void setUpFlavourSpinner(Spinner s){
         s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -67,29 +67,55 @@ public class DonutOrderingActivity extends AppCompatActivity implements AdapterV
 
                 if(type.equals("Yeast")){
                     ArrayAdapter<CharSequence> adapter =
-                            ArrayAdapter.createFromResource(getApplicationContext(), R.array.yeast_flavours_array,
+                            ArrayAdapter.createFromResource(getApplicationContext(),
+                                    R.array.yeast_flavours_array,
                                     android.R.layout.simple_spinner_dropdown_item);
                     flavourSpinner.setAdapter(adapter);
                 } else if(type.equals("Cake")){
                     ArrayAdapter<CharSequence> adapter =
-                            ArrayAdapter.createFromResource(getApplicationContext(), R.array.cake_flavours_array,
+                            ArrayAdapter.createFromResource(getApplicationContext(),
+                                    R.array.cake_flavours_array,
                                     android.R.layout.simple_spinner_dropdown_item);
                     flavourSpinner.setAdapter(adapter);
                 } else if(type.equals("Donut Hole")){
                     ArrayAdapter<CharSequence> adapter =
-                            ArrayAdapter.createFromResource(getApplicationContext(), R.array.donut_hole_flavours_array,
+                            ArrayAdapter.createFromResource(getApplicationContext(),
+                                    R.array.donut_hole_flavours_array,
                                     android.R.layout.simple_spinner_dropdown_item);
                     flavourSpinner.setAdapter(adapter);
                 }
-
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
+            public void onNothingSelected(AdapterView<?> parent) { }
         });
+    }
 
+    public void addDonut(View view){
+        // create a new Donut
+        String donutType = typeSpinner.getSelectedItem().toString();
+        String donutFlavour = flavourSpinner.getSelectedItem().toString();
+        int quantity = Integer.parseInt(quantitySpinner.getSelectedItem().toString());
+        Donut donut = new Donut(donutType, donutFlavour, quantity);
+        donut.setPrice(donut.itemPrice());
+
+        // add Donut to currentOrder + update subtotal
+        if(currDonutOrder.add(donut)){
+            currDonutOrder.setSubTotal();
+
+            // update listview
+            ArrayAdapter<Donut> adapter = new ArrayAdapter(this, R.layout.currorder_listitem,
+                    R.id.displayTextView, currDonutOrder.getItems());
+            donutOrderListView.setAdapter(adapter);
+
+            displaySubtotal();
+        }
+    }
+
+    public void removeDonut(View view){
+
+
+        displaySubtotal();
     }
 
     public void displaySubtotal(){
