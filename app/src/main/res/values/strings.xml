@@ -75,7 +75,4 @@
     <string name="cancel">Cancel Order</string>
 
     <string name="price">$0.00</string>
-
-    <!-- Strings for Alerts -->
-    <string name="remove_alert">Remove this donut?</string>
 </resources>
