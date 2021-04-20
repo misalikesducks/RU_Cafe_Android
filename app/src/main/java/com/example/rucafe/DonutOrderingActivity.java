@@ -103,7 +103,17 @@ public class DonutOrderingActivity extends AppCompatActivity implements AdapterV
                 removeAlert.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        Donut selectedDonut = (Donut)donutOrderListView.getItemAtPosition(position);
 
+                        if(currDonutOrder.remove(selectedDonut)){
+                            ArrayAdapter<Donut> adapter = new ArrayAdapter(DonutOrderingActivity.this, R.layout.currorder_listitem,
+                                    R.id.displayTextView, currDonutOrder.getItems());
+                            donutOrderListView.setAdapter(adapter);
+
+                            displaySubtotal();
+                            Toast toast = Toast.makeText(DonutOrderingActivity.this, "Item Removed", Toast.LENGTH_SHORT);
+                            toast.show();
+                        }
                     }
                 });
                 removeAlert.setNegativeButton("NO", new DialogInterface.OnClickListener() {
