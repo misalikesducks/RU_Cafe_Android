@@ -34,7 +34,7 @@ public class CurrentOrderActivity extends AppCompatActivity{
         ordersListview.setOnItemClickListener(new OnItemClickListener(){
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 selectedItem = itemsToDisplay.get(position);
-                Toast.makeText(CurrentOrderActivity.this, selectedItem.toString(),Toast.LENGTH_SHORT).show();
+                //Toast.makeText(CurrentOrderActivity.this, selectedItem.toString(),Toast.LENGTH_SHORT).show();
                 view.setSelected(true);
             }
         });
@@ -55,6 +55,24 @@ public class CurrentOrderActivity extends AppCompatActivity{
 
     }
 
+    public void placeOrder(View view){
+        if(selectedItem == null){
+            Toast.makeText(CurrentOrderActivity.this, "Nothing Selected",Toast.LENGTH_SHORT).show();
+        }
+        if(MainActivity.currStoreOrder.getOrders().add(MainActivity.currOrder)){
+            Order.incrementIDNumber();
+            MainActivity.currOrder = new Order();
+            Toast.makeText(CurrentOrderActivity.this, "Order Placed",Toast.LENGTH_SHORT).show();
+            populateListView();
+        }else{
+            Toast.makeText(CurrentOrderActivity.this, "Could not add",Toast.LENGTH_SHORT).show();
+        }
+
+
+    }
+    public void removeOrder(View view){
+
+    }
 
 
 

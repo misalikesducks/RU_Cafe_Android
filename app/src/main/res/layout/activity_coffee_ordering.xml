@@ -126,7 +126,7 @@
         android:layout_marginRight="88dp"
         android:layout_marginBottom="116dp"
         android:onClick="addCoffeeToOrder"
-        android:text="Button"
+        android:text="@string/place_order_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
