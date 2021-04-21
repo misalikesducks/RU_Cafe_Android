@@ -12,7 +12,7 @@ import android.widget.*;
  * DonutOrderingActivity is the Activity class for the layout file activity_donut_ordering.xml
  * @author Connie Chen, Tiffany Lee
  */
-public class DonutOrderingActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class DonutOrderingActivity extends AppCompatActivity{
     Spinner typeSpinner, flavourSpinner, quantitySpinner;
     Button addToOrderButton, addButton, removeButton;
     ListView donutOrderListView;
@@ -31,11 +31,8 @@ public class DonutOrderingActivity extends AppCompatActivity implements AdapterV
 
         // initialize all components of GUI
         typeSpinner = findViewById(R.id.typeSpinner);
-        typeSpinner.setOnItemSelectedListener(this);
         flavourSpinner = findViewById(R.id.flavourSpinner);
-        flavourSpinner.setOnItemSelectedListener(this);
         quantitySpinner = findViewById(R.id.quantitySpinner);
-        quantitySpinner.setOnItemSelectedListener(this);
 
         addToOrderButton = findViewById(R.id.addToOrderButton);
         addButton = findViewById(R.id.addButton);
@@ -58,13 +55,6 @@ public class DonutOrderingActivity extends AppCompatActivity implements AdapterV
                 android.R.layout.simple_spinner_dropdown_item);
         quantitySpinner.setAdapter(adapter);
     }
-
-    // interface overrides
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) { }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) { } // can leave it empty
 
     // HELPER METHODS
 
@@ -188,6 +178,8 @@ public class DonutOrderingActivity extends AppCompatActivity implements AdapterV
             // clears listView and textView
             subtotalNumTextView.setText(" ");
             donutOrderListView.setAdapter(null);
+
+            currDonutOrder = new Order();
 
             Toast toast = Toast.makeText(DonutOrderingActivity.this,
                     "Order Placed", Toast.LENGTH_SHORT);
