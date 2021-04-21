@@ -22,6 +22,7 @@ public class CurrentOrderActivity extends AppCompatActivity{
     protected ArrayList<MenuItem> itemsToDisplay = new ArrayList<>();
     protected ArrayAdapter<MenuItem> adapter;
     protected MenuItem selectedItem;
+    public static final int EMPTY = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,21 +57,30 @@ public class CurrentOrderActivity extends AppCompatActivity{
     }
 
     public void placeOrder(View view){
-        if(selectedItem == null){
-            Toast.makeText(CurrentOrderActivity.this, "Nothing Selected",Toast.LENGTH_SHORT).show();
-        }
-        if(MainActivity.currStoreOrder.getOrders().add(MainActivity.currOrder)){
+        if(MainActivity.currStoreOrder.getOrders().add(MainActivity.currOrder) && MainActivity.currOrder.getItems().size() != EMPTY){
             Order.incrementIDNumber();
             MainActivity.currOrder = new Order();
             Toast.makeText(CurrentOrderActivity.this, "Order Placed",Toast.LENGTH_SHORT).show();
+            itemsToDisplay.clear();
             populateListView();
         }else{
-            Toast.makeText(CurrentOrderActivity.this, "Could not add",Toast.LENGTH_SHORT).show();
+            Toast.makeText(CurrentOrderActivity.this, "Could not place an empty order",Toast.LENGTH_SHORT).show();
         }
-
-
     }
     public void removeOrder(View view){
+        if(selectedItem == null)
+            Toast.makeText(CurrentOrderActivity.this, "Nothing is selected", Toast.LENGTH_SHORT).show();
+        else if(itemsToDisplay.size() == EMPTY){
+            Toast.makeText(CurrentOrderActivity.this, "Could not remove on empty order",Toast.LENGTH_SHORT).show();
+        }else{
+            MainActivity.currOrder.getItems().remove(selectedItem);
+            itemsToDisplay.remove(selectedItem);
+            selectedItem = null;
+            itemsToDisplay.clear();
+            populateListView();
+            Toast.makeText(CurrentOrderActivity.this, "Item removed",Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 
