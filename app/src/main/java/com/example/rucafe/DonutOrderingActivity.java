@@ -8,6 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 
+/**
+ * DonutOrderingActivity is the Activity class for the layout file activity_donut_ordering.xml
+ * @author Connie Chen, Tiffany Lee
+ */
 public class DonutOrderingActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     Spinner typeSpinner, flavourSpinner, quantitySpinner;
     Button addToOrderButton, addButton, removeButton;
@@ -16,6 +20,10 @@ public class DonutOrderingActivity extends AppCompatActivity implements AdapterV
 
     protected Order currDonutOrder = new Order();
 
+    /**
+     * Initializes all the components of the layout
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,15 +61,17 @@ public class DonutOrderingActivity extends AppCompatActivity implements AdapterV
 
     // interface overrides
     @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-        displaySubtotal();
-    }
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) { }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) { } // can leave it empty
 
-    // helper methods
+    // HELPER METHODS
+
+    /**
+     * Initializes the Listener for typeSpinner and sets the values for flavourSpinner
+     * @param s
+     */
     public void setUpFlavourSpinner(Spinner s){
         s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -94,6 +104,10 @@ public class DonutOrderingActivity extends AppCompatActivity implements AdapterV
         });
     }
 
+    /**
+     * Sets up the Listener for the donutOrderListView
+     * @param l
+     */
     public void setUpListView(ListView l) {
         l.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -106,12 +120,14 @@ public class DonutOrderingActivity extends AppCompatActivity implements AdapterV
                         Donut selectedDonut = (Donut)donutOrderListView.getItemAtPosition(position);
 
                         if(currDonutOrder.remove(selectedDonut)){
-                            ArrayAdapter<Donut> adapter = new ArrayAdapter(DonutOrderingActivity.this, R.layout.currorder_listitem,
+                            ArrayAdapter<Donut> adapter = new ArrayAdapter(
+                                    DonutOrderingActivity.this, R.layout.currorder_listitem,
                                     R.id.displayTextView, currDonutOrder.getItems());
                             donutOrderListView.setAdapter(adapter);
-
+                            currDonutOrder.setSubTotal();
                             displaySubtotal();
-                            Toast toast = Toast.makeText(DonutOrderingActivity.this, "Item Removed", Toast.LENGTH_SHORT);
+                            Toast toast = Toast.makeText(DonutOrderingActivity.this,
+                                    "Item Removed", Toast.LENGTH_SHORT);
                             toast.show();
                         }
                     }
@@ -119,16 +135,21 @@ public class DonutOrderingActivity extends AppCompatActivity implements AdapterV
                 removeAlert.setNegativeButton("NO", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        Toast toast = Toast.makeText(DonutOrderingActivity.this,
+                                "Remove Cancelled", Toast.LENGTH_SHORT);
+                        toast.show();
                     }
                 });
                 AlertDialog removeDialog = removeAlert.create();
                 removeDialog.show();
-                // https://stackoverflow.com/questions/4834750/how-to-get-the-selected-item-from-listview
             }
         });
     }
 
+    /**
+     * Adds donut(s) to the order, updating the subtotalTextView and donutOrderListView
+     * @param view
+     */
     public void addDonut(View view){
         // create a new Donut
         String donutType = typeSpinner.getSelectedItem().toString();
@@ -150,6 +171,33 @@ public class DonutOrderingActivity extends AppCompatActivity implements AdapterV
         }
     }
 
+    /**
+     * Adds the Donut order to the current Order
+     * @param view
+     */
+    public void addToOrder(View view){
+        if(currDonutOrder.items.isEmpty()){ // checks if order is empty, shows error
+            Toast toast = Toast.makeText(DonutOrderingActivity.this,
+                    "Error: No Items in Order", Toast.LENGTH_SHORT);
+            toast.show();
+        }else{ // add order to current order
+            for(MenuItem item : currDonutOrder.getItems()){
+                MainActivity.currOrder.getItems().add(item);
+            }
+
+            // clears listView and textView
+            subtotalNumTextView.setText(" ");
+            donutOrderListView.setAdapter(null);
+
+            Toast toast = Toast.makeText(DonutOrderingActivity.this,
+                    "Order Placed", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+    }
+
+    /**
+     * Updates the subtotalNumTextView with the subtotal of the donutOrder
+     */
     public void displaySubtotal(){
         subtotalNumTextView.setText("" + StoreOrders.convertToMoney(currDonutOrder.getSubTotal()));
     }
