@@ -116,9 +116,9 @@ public class CoffeeOrderingActivity extends AppCompatActivity{
     public void addCoffeeToOrder(View view){
         if(currCoffeeOrder.getItems().add(currCoffee)) {
             currCoffeeOrder.setSubTotal();
-            Toast toast = Toast.makeText(getApplicationContext(), "Order Added", Toast.LENGTH_SHORT);
-            toast.show();
-        }
+            Toast.makeText(CoffeeOrderingActivity.this, "Order Added", Toast.LENGTH_SHORT).show();
+        }else
+            Toast.makeText(CoffeeOrderingActivity.this, "Could not add", Toast.LENGTH_SHORT).show();
 
 
     }
