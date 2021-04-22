@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loadStoreOrder(View view){
-        Intent intent = new Intent(MainActivity.this, CurrentOrderActivity.class);
+        Intent intent = new Intent(MainActivity.this, OrderDetailActivity.class);
         startActivity(intent);
     }
 
