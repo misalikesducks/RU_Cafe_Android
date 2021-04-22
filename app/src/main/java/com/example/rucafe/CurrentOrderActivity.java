@@ -16,36 +16,40 @@ import java.util.List;
 
 public class CurrentOrderActivity extends AppCompatActivity{
     ListView ordersListview;
-    Button removeOrderButton, placeOrderButton;
     TextView subtotalTextView, taxTextView, totalTextView;
 
     protected ArrayList<MenuItem> itemsToDisplay = new ArrayList<>();
     protected ArrayAdapter<MenuItem> adapter;
     protected MenuItem selectedItem;
     public static final int EMPTY = 0;
+
+    /**
+     * Oncreate Method for Current Order Activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current_order);
 
-//        ordersListview.setOnClickListener(this);
+        subtotalTextView = (TextView) findViewById(R.id.subtotalDisplayTextView);
+        taxTextView = (TextView) findViewById(R.id.salesTaxDisplayTextView);
+        totalTextView = (TextView) findViewById(R.id.totalDisplayTextView);
         ordersListview = (ListView) findViewById(R.id.orderDisplayListView);
         populateListView();
         ordersListview.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         ordersListview.setOnItemClickListener(new OnItemClickListener(){
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 selectedItem = itemsToDisplay.get(position);
-                //Toast.makeText(CurrentOrderActivity.this, selectedItem.toString(),Toast.LENGTH_SHORT).show();
                 view.setSelected(true);
             }
         });
-        removeOrderButton = (Button) findViewById(R.id.removeOrderButton);
-        placeOrderButton = (Button) findViewById(R.id.placeOrderButton);
-        subtotalTextView = (TextView) findViewById(R.id.subtotalDisplayTextView);
-        taxTextView = (TextView) findViewById(R.id.salesTaxDisplayTextView);
-        totalTextView = (TextView) findViewById(R.id.totalDisplayTextView);
+
     }
 
+    /**
+     * Populates the adapter with menuItems and set it to listview
+     */
     public void populateListView(){
         for(int i = 0; i < MainActivity.currOrder.items.size(); i++){
             itemsToDisplay.add(MainActivity.currOrder.items.get(i));
@@ -54,8 +58,18 @@ public class CurrentOrderActivity extends AppCompatActivity{
                 (this, R.layout.currorder_listitem,R.id.displayTextView,itemsToDisplay);
         ordersListview.setAdapter(adapter);
 
+        MainActivity.currOrder.setSubTotal();
+        subtotalTextView.setText(StoreOrders.convertToMoney(MainActivity.currOrder.getSubTotal()));
+        MainActivity.currOrder.setSalesTax();
+        taxTextView.setText(StoreOrders.convertToMoney(MainActivity.currOrder.getSalesTax()));
+        MainActivity.currOrder.setTotal();
+        totalTextView.setText(StoreOrders.convertToMoney(MainActivity.currOrder.getTotal()));
     }
 
+    /**
+     * Place an order to StoreOrder
+     * @param view - click of placeOrderButton
+     */
     public void placeOrder(View view){
         if(MainActivity.currStoreOrder.getOrders().add(MainActivity.currOrder) && MainActivity.currOrder.getItems().size() != EMPTY){
             Order.incrementIDNumber();
@@ -66,14 +80,20 @@ public class CurrentOrderActivity extends AppCompatActivity{
         }else{
             Toast.makeText(CurrentOrderActivity.this, "Could not place an empty order",Toast.LENGTH_SHORT).show();
         }
+        finish();
     }
+
+    /**
+     * Removes selected order in ListView
+     * @param view - click of removeOrderButton
+     */
     public void removeOrder(View view){
+
         if(selectedItem == null)
             Toast.makeText(CurrentOrderActivity.this, "Nothing is selected", Toast.LENGTH_SHORT).show();
         else if(itemsToDisplay.size() == EMPTY){
             Toast.makeText(CurrentOrderActivity.this, "Could not remove on empty order",Toast.LENGTH_SHORT).show();
-        }else{
-            MainActivity.currOrder.getItems().remove(selectedItem);
+        }else if(MainActivity.currOrder.getItems().remove(selectedItem)){
             itemsToDisplay.remove(selectedItem);
             selectedItem = null;
             itemsToDisplay.clear();
@@ -83,18 +103,4 @@ public class CurrentOrderActivity extends AppCompatActivity{
 
 
     }
-
-
-
-    // public void populateListView()
-    
-    /*
-        CurrentOrder
-        remove
-            - order is empty
-            - item not selected
-        place order
-            - order is emtpy
-            - order has been placed
-    */
 }

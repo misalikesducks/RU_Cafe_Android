@@ -185,6 +185,7 @@ public class DonutOrderingActivity extends AppCompatActivity{
                     "Order Placed", Toast.LENGTH_SHORT);
             toast.show();
         }
+        finish();
     }
 
     /**

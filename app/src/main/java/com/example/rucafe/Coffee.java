@@ -17,11 +17,6 @@ public class Coffee extends MenuItem implements Customizable{
    public static final double ADD_IN = 0.20;
    public static final double EMPTY = 0.0;
 
-   public Coffee(){
-      super(0.0, 0);
-      this.size = null;
-      this.addIns = null;
-   }
 
    /**
     * Creates a Coffee object
