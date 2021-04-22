@@ -11,8 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
+        android:background="@drawable/list_select"
         android:padding="2dp"
-        android:textColor="#4d4d4d"
-        android:text="TextView"
-        android:background="@drawable/list_select"/>
+        android:text="@string/textview"
+        android:textColor="#4d4d4d" />
 </LinearLayout>

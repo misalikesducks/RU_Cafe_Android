@@ -45,7 +45,6 @@
         android:layout_marginTop="29dp"
         android:layout_marginEnd="133dp"
         android:layout_marginRight="133dp"
-        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/subTotalTextView"
         app:layout_constraintTop_toBottomOf="@+id/placeOrderButton" />
@@ -73,7 +72,6 @@
         android:layout_marginTop="14dp"
         android:layout_marginEnd="133dp"
         android:layout_marginRight="133dp"
-        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/totalTxtView"
         app:layout_constraintTop_toBottomOf="@+id/salesTaxDisplayTextView" />
@@ -115,7 +113,6 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="133dp"
         android:layout_marginRight="133dp"
-        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/salesTaxTextView"
         app:layout_constraintTop_toBottomOf="@+id/subtotalDisplayTextView" />
@@ -133,20 +130,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:choiceMode="singleChoice"/>
-
-    <TextView
-        android:id="@+id/labelTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="27dp"
-        android:layout_marginLeft="27dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="245dp"
-        android:layout_marginRight="245dp"
-        android:text="@string/select_instruction"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/orderDisplayListView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
