@@ -155,18 +155,4 @@ public class CoffeeOrderingActivity extends AppCompatActivity{
         finish();
     }
 
-    /*
-
-         error check
-        Coffee
-        get add ins
-        - no size chosen
-        - no quantity chosen
-        select quantity
-        - no size chosen
-        add coffee to order
-        - no size chosen
-        - no quantity chosen
-        - added to order
-    */
 }

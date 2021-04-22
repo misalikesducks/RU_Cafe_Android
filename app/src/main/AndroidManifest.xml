@@ -15,7 +15,7 @@
             android:parentActivityName=".MainActivity">
         </activity>
         <activity
-            android:name=".CurrentOrderActivity"
+            android:name=".OrderDetailActivity"
             android:label="Current Order"
             android:parentActivityName=".MainActivity">
         </activity>

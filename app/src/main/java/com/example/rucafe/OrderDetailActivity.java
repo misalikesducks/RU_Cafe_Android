@@ -2,19 +2,15 @@ package com.example.rucafe;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.Color;
 import android.view.View;
 import android.widget.*;
 import android.os.Bundle;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.List;
 
-public class CurrentOrderActivity extends AppCompatActivity{
+public class OrderDetailActivity extends AppCompatActivity{
     ListView ordersListview;
     TextView subtotalTextView, taxTextView, totalTextView;
 
@@ -74,11 +70,11 @@ public class CurrentOrderActivity extends AppCompatActivity{
         if(MainActivity.currStoreOrder.getOrders().add(MainActivity.currOrder) && MainActivity.currOrder.getItems().size() != EMPTY){
             Order.incrementIDNumber();
             MainActivity.currOrder = new Order();
-            Toast.makeText(CurrentOrderActivity.this, "Order Placed",Toast.LENGTH_SHORT).show();
+            Toast.makeText(OrderDetailActivity.this, "Order Placed",Toast.LENGTH_SHORT).show();
             itemsToDisplay.clear();
             populateListView();
         }else{
-            Toast.makeText(CurrentOrderActivity.this, "Could not place an empty order",Toast.LENGTH_SHORT).show();
+            Toast.makeText(OrderDetailActivity.this, "Could not place an empty order",Toast.LENGTH_SHORT).show();
         }
         finish();
     }
@@ -90,15 +86,15 @@ public class CurrentOrderActivity extends AppCompatActivity{
     public void removeOrder(View view){
 
         if(selectedItem == null)
-            Toast.makeText(CurrentOrderActivity.this, "Nothing is selected", Toast.LENGTH_SHORT).show();
+            Toast.makeText(OrderDetailActivity.this, "Nothing is selected", Toast.LENGTH_SHORT).show();
         else if(itemsToDisplay.size() == EMPTY){
-            Toast.makeText(CurrentOrderActivity.this, "Could not remove on empty order",Toast.LENGTH_SHORT).show();
+            Toast.makeText(OrderDetailActivity.this, "Could not remove on empty order",Toast.LENGTH_SHORT).show();
         }else if(MainActivity.currOrder.getItems().remove(selectedItem)){
             itemsToDisplay.remove(selectedItem);
             selectedItem = null;
             itemsToDisplay.clear();
             populateListView();
-            Toast.makeText(CurrentOrderActivity.this, "Item removed",Toast.LENGTH_SHORT).show();
+            Toast.makeText(OrderDetailActivity.this, "Item removed",Toast.LENGTH_SHORT).show();
         }
 
 
