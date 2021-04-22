@@ -10,6 +10,11 @@ import android.widget.AdapterView.OnItemClickListener;
 
 import java.util.ArrayList;
 
+/**
+ * Activity class for the Order Details page
+ * Implements removing MenuItems and placing an Order to the currStoreOrder
+ * @author Connie Chen, Tiffany Lee
+ */
 public class OrderDetailActivity extends AppCompatActivity{
     ListView ordersListview;
     TextView subtotalTextView, taxTextView, totalTextView;
@@ -19,14 +24,10 @@ public class OrderDetailActivity extends AppCompatActivity{
     protected MenuItem selectedItem;
     public static final int EMPTY = 0;
 
-    /**
-     * Oncreate Method for Current Order Activity
-     * @param savedInstanceState
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_current_order);
+        setContentView(R.layout.activity_order_details);
 
         subtotalTextView = (TextView) findViewById(R.id.subtotalDisplayTextView);
         taxTextView = (TextView) findViewById(R.id.salesTaxDisplayTextView);
@@ -40,11 +41,10 @@ public class OrderDetailActivity extends AppCompatActivity{
                 view.setSelected(true);
             }
         });
-
     }
 
     /**
-     * Populates the adapter with menuItems and set it to listview
+     * Populates the adapter with menuItems and set it to ListView
      */
     public void populateListView(){
         for(int i = 0; i < MainActivity.currOrder.items.size(); i++){
@@ -63,11 +63,11 @@ public class OrderDetailActivity extends AppCompatActivity{
     }
 
     /**
-     * Place an order to StoreOrder
+     * Place an Order to currStoreOrder
      * @param view - click of placeOrderButton
      */
     public void placeOrder(View view){
-        if(MainActivity.currStoreOrder.getOrders().add(MainActivity.currOrder) && MainActivity.currOrder.getItems().size() != EMPTY){
+        if(MainActivity.currOrder.getItems().size() != EMPTY && MainActivity.currStoreOrder.getOrders().add(MainActivity.currOrder)){
             Order.incrementIDNumber();
             MainActivity.currOrder = new Order();
             Toast.makeText(OrderDetailActivity.this, "Order Placed",Toast.LENGTH_SHORT).show();
@@ -80,11 +80,10 @@ public class OrderDetailActivity extends AppCompatActivity{
     }
 
     /**
-     * Removes selected order in ListView
+     * Removes selected Order in ListView
      * @param view - click of removeOrderButton
      */
     public void removeOrder(View view){
-
         if(selectedItem == null)
             Toast.makeText(OrderDetailActivity.this, "Nothing is selected", Toast.LENGTH_SHORT).show();
         else if(itemsToDisplay.size() == EMPTY){
@@ -96,7 +95,5 @@ public class OrderDetailActivity extends AppCompatActivity{
             populateListView();
             Toast.makeText(OrderDetailActivity.this, "Item removed",Toast.LENGTH_SHORT).show();
         }
-
-
     }
 }

@@ -11,12 +11,17 @@ import android.widget.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+/**
+ * Store order activity class for Store Order page
+ * Implements viewing different orders placed and removing orders
+ * @author Connie Chen, Tiffany Lee
+ */
 public class StoreOrderActivity extends AppCompatActivity {
     Spinner orderIDSpinner;
     TextView storeOrderPriceTextView;
     ListView storeOrdersListView;
     Button cancelOrderBtn;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +35,10 @@ public class StoreOrderActivity extends AppCompatActivity {
         setUpOrderIDSpinner(orderIDSpinner);
     }
 
+    /**
+    * Initializes the orderIDSpinner with an ArrayList of all the Order(s) in currStoreOrder
+    * @param s Spinner to be initialized
+    */
     public void setUpOrderIDSpinner(Spinner s){
         ArrayList<String> orderIDs = new ArrayList<>();
         for(Order order : MainActivity.currStoreOrder.getOrders()){
@@ -54,7 +63,7 @@ public class StoreOrderActivity extends AppCompatActivity {
                         R.layout.currorder_listitem, R.id.displayTextView, itemsToDisplay);
                 storeOrdersListView.setAdapter(adapter);
 
-                storeOrderPriceTextView.setText(StoreOrders.convertToMoney(orderToDisplay.getTotal())); // total isn't being updated for some reason
+                storeOrderPriceTextView.setText(StoreOrders.convertToMoney(orderToDisplay.getTotal()));
             }
 
             @Override
@@ -90,17 +99,5 @@ public class StoreOrderActivity extends AppCompatActivity {
                 toast.show();
             }
         }
-    }
-
-    /*
-        StoreOrder
-        cancel order
-        - no store orders
-        - order not selected
-        - order has been cancelled
-        export order
-        - successful export
-        - unsuccessful export
-        - no store orders to export
-    */
+    }    
 }

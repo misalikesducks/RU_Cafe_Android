@@ -8,7 +8,11 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.*;
 
-import org.w3c.dom.Text;
+/**
+ * Activity Class for Ordering Coffee View
+ * Implements adding addins and placing a coffee order
+ * @Author Connie Chen, Tiffany Lee
+ */
 
 import java.util.ArrayList;
 
@@ -87,12 +91,10 @@ public class CoffeeOrderingActivity extends AppCompatActivity{
                 quantity = Integer.parseInt(parent.getItemAtPosition(position).toString());
                 currCoffee.setPrice(currCoffee.itemPrice());
                 coffeeTotalTextview.setText(""+StoreOrders.convertToMoney(currCoffee.getPrice()));
-
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
 
         });

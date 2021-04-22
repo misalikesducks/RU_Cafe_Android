@@ -60,10 +60,17 @@ public class DonutOrderingActivity extends AppCompatActivity{
 
     /**
      * Initializes the Listener for typeSpinner and sets the values for flavourSpinner
-     * @param s
+     * @param s is the Spinner to be initiliazed
      */
     public void setUpFlavourSpinner(Spinner s){
         s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            /**
+             * Reacts when user selects an item in the Spinner s, updates the items in flavoursSpinner
+             * @param parent
+             * @param view
+             * @param position
+             * @param id
+             */
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String type = parent.getItemAtPosition(position).toString();
@@ -88,7 +95,10 @@ public class DonutOrderingActivity extends AppCompatActivity{
                     flavourSpinner.setAdapter(adapter);
                 }
             }
-
+             /**
+             * Does nothing when an item is not selected in the Spinner s
+             * @param parent
+             */
             @Override
             public void onNothingSelected(AdapterView<?> parent) { }
         });
@@ -96,10 +106,18 @@ public class DonutOrderingActivity extends AppCompatActivity{
 
     /**
      * Sets up the Listener for the donutOrderListView
-     * @param l
+     * @param l is the ListView to be initiliazed
      */
     public void setUpListView(ListView l) {
         l.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            /**
+             * Reacts when user clicks an item in the ListView l
+             * Prompts user for the removal of an item from the Order
+             * @param parent
+             * @param view
+             * @param position
+             * @param id
+             */
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 AlertDialog.Builder removeAlert = new AlertDialog.Builder(DonutOrderingActivity.this);
@@ -194,19 +212,4 @@ public class DonutOrderingActivity extends AppCompatActivity{
     public void displaySubtotal(){
         subtotalNumTextView.setText("" + StoreOrders.convertToMoney(currDonutOrder.getSubTotal()));
     }
-
-   /*
-       Donut
-       add donut
-       - no type selected
-       - no amount selected
-       - no flavour selected
-       remove donut
-       - order is empty
-       - no donut selected
-       - donut is removed
-       add to order
-       - order is empty
-       - donut is added
-   */
 }
